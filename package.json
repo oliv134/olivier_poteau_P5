@@ -4,11 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.build.config.js --mode=production",
-    "build:es5": "cross-env NODE_ENV=production webpack --config config/webpack.build.es5.config.js --mode=production",
-    "dev": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.config.js --mode=development",
-    "prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --mode=production",
-    "prod:es5": "cross-env NODE_ENV=production webpack --config config/webpack.prod.es5.config.js --mode=production"
+    "dev": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.build.config.js",
+    "build:es5": "cross-env NODE_ENV=production webpack --config config/webpack.build.es5.config.js",
+    "prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js",
+    "prod:es5": "cross-env NODE_ENV=production webpack --config config/webpack.prod.es5.config.js"
   },
   "author": "Olivier POTEAU",
   "license": "ISC",

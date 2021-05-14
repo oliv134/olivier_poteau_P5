@@ -1,16 +1,17 @@
-import retrieveContent from './query.js';
+import retrieveContent from './query.js'
+import '../scss/app.scss'
 
-async function showContent() {
+async function showContent () {
   try {
-    const content = await retrieveContent();
+    const content = await retrieveContent()
 
-    let elt = document.createElement('div');
-    elt.innerHTML = content.join('<br />');
+    const elt = document.createElement('div')
+    elt.innerHTML = content.join('<br />')
 
-    document.getElementsByTagName('body')[0].appendChild(elt);
+    document.getElementsByTagName('body')[0].appendChild(elt)
   } catch (e) {
-    console.log('Error', e);
+    console.log('Error', e)
   }
 }
 
-showContent();
+showContent()

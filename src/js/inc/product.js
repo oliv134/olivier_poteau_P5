@@ -1,0 +1,63 @@
+import { get } from './fetch'
+import cart from './cart'
+
+const app = {
+  init () {
+    cart.init()
+  },
+  /**
+  * Get products from the backend in json format
+  *
+  * @returns {Object[]}
+  */
+  getProducts (productId) {
+    console.log('Lecture articles')
+    return get('http://localhost:3000/api/cameras' + (productId !== undefined ? '/' + productId : ''))
+      .then(response => response.json())
+  },
+
+  /**
+     * Displays all products retrieved earlier from the database on the .getProducts()
+     */
+  displayProducts (products) {
+    const template = document.querySelector('#product-card')
+    const targetElement = document.querySelector('.products')
+
+    for (const product of products) {
+      // Create a clone of the template and fill in all the information collected earlier
+      const templateClone = document.importNode(template.content, true)
+
+      // Image div parent
+      templateClone.querySelector('.product__image').href = 'product.html?id=' + product._id
+      templateClone.querySelector('img').src = product.imageUrl
+      templateClone.querySelector('img').alt = product.name
+
+      // Shop button
+      templateClone.querySelector('.shop').dataset.id = product._id
+      templateClone.querySelector('.shop').addEventListener('click', cart.handleShopButtonClick)
+
+      // Preview button
+      templateClone.querySelector('.view').href = 'produit.html?id=' + product._id
+
+      // Description paragraphs
+      templateClone.querySelector('.product__name').textContent = product.name
+      templateClone.querySelector('.product__description').textContent = product.description
+      templateClone.querySelector('.product__price').textContent = (product.price / 100) + '€'
+
+      // Add the item's clone to the parent 'products'
+      targetElement.appendChild(templateClone)
+    }
+  },
+  displayCart () {
+    const products = JSON.parse(cart.getProducts())
+
+    for (const product in products) {
+      app.getProducts(product)
+        .then(response => {
+          cart.displayProduct(response, products[product])
+        })
+    }
+  }
+
+}
+export default app

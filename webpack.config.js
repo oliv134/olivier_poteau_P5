@@ -41,7 +41,25 @@ module.exports = {
         test: /\.((c|sa|sc)ss)$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "autoprefixer",
+                    {
+                      // Options
+                    }
+                  ]
+                ]
+              }
+            }
+          },
           'sass-loader'
         ]
       },
@@ -55,7 +73,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "./css/[name].css" 
     }),
-    new FaviconsWebpackPlugin(path.resolve(environment.paths.source, 'images', 'logo.png')) 
+    new FaviconsWebpackPlugin(path.resolve(environment.paths.source, 'images', 'favicon.png')) 
   ].concat(HtmlPluginEntries)
 
 }

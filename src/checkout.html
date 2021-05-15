@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="This is project 5 of the web developer course at openclassroom" />
+  <meta name="author" content="Olivier POTEAU" />
+  <meta name="generator" content="Webpack" />
+  <title>Orinoco - Commande</title>
+
+  <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" /> -->
+</head>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top p-2 bg-dark text-white">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="./images/logo-w60.png" alt="Logo Orinico" height="30" class="d-inline-block align-text-center" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="index.html">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Contact</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white disabled" href="#" tabindex="-1" aria-disabled="true">Mes commandes</a>
+          </li>
+        </ul>
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <div class="text-end">
+        <ul class="navbar-nav d-flex flex-row">
+          <!-- Icon dropdown -->
+          <li class="nav-item me-3 me-lg-0 dropdown">
+            <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Mon compte</a></li>
+              <li><a class="dropdown-item" href="#">Mes Commandes</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Déconnexion</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link text-white" href="cart.html">
+              <span><i class="fas fa-shopping-cart shop-icon"></i></span>
+              <span class="badge rounded-pill badge-notification bg-danger shop-icon__counter">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<body>
+  <main class="container">
+    <div class="card">
+      <div class="row">
+
+        <div class="cart col-md-8">
+          <div class="title mb-5">
+            <div class="row">
+              <div class="col">
+                <h4><b>Votre Panier</b></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="row border-bottom">
+            <div class="row main align-items-center product__row">
+              <div class="col-2 d-none d-lg-inline"></div>
+              <div class="col">Article</div>
+              <div class="col-1 p-0">Prix</div>
+              <div class="col-4 col-lg-3 text-center">Quantité</div>
+              <div class="col-2">Prix Total</div>
+              <div class="col-1"></div>
+            </div>
+          </div>
+
+          <div id="cart__products">
+            <!-- Cart Row Template -->
+          </div>
+
+          <!-- Cart Row Template -->
+          <template id="cart__row">
+
+            <div class="row main align-items-center product__row border-top border-bottom">
+              <div class="col-2 d-none d-lg-inline">
+                <img class="img-fluid product__image" src="https://i.imgur.com/yUJweFV.jpeg" />
+              </div>
+              <div class="col">
+                <div class="row text-muted">Appareil photo</div>
+                <div class="row product__name">Name</div>
+              </div>
+              <div class="col-1 p-0">
+                &euro; <span class="product__price"></span>
+              </div>
+              <div class="col-4 col-lg-3 text-center product__quantity">
+                <a href="#" class="minus"><i class="far fa-minus-square"></i></a><input type="test"
+                  class="form-control col-sm-2 w-25 d-inline p-0 m-0 text-center" id="quantity" name="quantity"
+                  class="quantity" placeholder="1" aria-label="quantity" aria-describedby="basic-addon1" /><a href="#"
+                  class="plus"><i class="far fa-plus-square"></i></a>
+              </div>
+              <div class="col-2">
+                &euro; <span class="product__total"></span>
+              </div>
+
+              <div class="col-1 trash">
+                <i class="fas fa-trash-alt"></i>
+              </div>
+            </div>
+
+          </template>
+          <!-- Cart Row Template -->
+
+          <div class="back-to-shop">
+            <a href="index.html">&leftarrow;</a><span class="text-muted">Retour aux articles</span>
+          </div>
+        </div>
+
+        <div class="col-md-4 summary">
+          <div>
+            <h5><b>Résumé de la commande</b></h5>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col" style="padding-left: 0">3 Articles</div>
+            <div class="col text-right subtotal__price">&euro; 132.00</div>
+          </div>
+          <form>
+            <p>Frais de Port</p>
+            <select>
+              <option class="text-muted">
+                Livraison Standard - &euro;0.00
+              </option>
+            </select>
+            <p>Code Promo</p>
+            <input id="code" placeholder="Entrez votre code" />
+          </form>
+          <div class="row" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0">
+            <div class="col">Prix Total</div>
+            <div class="col text-right total__price">&euro; 137.00</div>
+          </div>
+          <button class="btn btn-primary">Commandez</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row cart">
+        <div class="col">
+          <h4 class="mb-3">Vos coordonnées</h4>
+          
+          <!-- Formulaire -->
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Un prénom valide est requis.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Un nom valide est requis.
+                </div>
+              </div>
+
+
+
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                <div class="invalid-feedback">
+                  Veuillez saisir une adresse e-mail valide pour les mises à jour d'expédition.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="address" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="address2" class="form-label">Précision d'adresse<span
+                    class="text-muted">(facultatif)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+              </div>
+              <div class="col-sm-6">
+                <label for="zip" class="form-label">Code postal</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="state" class="form-label">Ville</label>
+                <select class="form-select" id="city" required>
+                  <option value="">Choisissez...</option>
+
+                </select>
+
+                <div class="invalid-feedback">
+                  Veuillez choisir une commune.
+                </div>
+              </div>
+            </div>
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Passer la commande</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>-->
+</body>
+
+</html>

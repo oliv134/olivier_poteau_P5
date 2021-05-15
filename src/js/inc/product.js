@@ -28,7 +28,7 @@ const app = {
       const templateClone = document.importNode(template.content, true)
 
       // Image div parent
-      templateClone.querySelector('.product__image').href = 'product.html?id=' + product._id
+      templateClone.querySelector('.product__image').href = 'details.html?id=' + product._id
       templateClone.querySelector('img').src = product.imageUrl
       templateClone.querySelector('img').alt = product.name
 
@@ -37,7 +37,7 @@ const app = {
       templateClone.querySelector('.shop').addEventListener('click', cart.handleShopButtonClick)
 
       // Preview button
-      templateClone.querySelector('.view').href = 'produit.html?id=' + product._id
+      templateClone.querySelector('.view').href = 'details.html?id=' + product._id
 
       // Description paragraphs
       templateClone.querySelector('.product__name').textContent = product.name

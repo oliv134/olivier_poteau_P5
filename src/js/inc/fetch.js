@@ -6,7 +6,7 @@
  * @returns {Promise<Response>}
  */
 
-export function get (url) {
+export const get = (url) => {
   const header = {
     method: 'GET',
     headers: {
@@ -29,7 +29,7 @@ export function get (url) {
 *
 * @returns {Promise<Response>}
 */
-export function post (url, content) {
+export const post = (url, content) => {
   const header = {
     method: 'POST',
     body: content,

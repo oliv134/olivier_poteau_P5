@@ -5,7 +5,7 @@ const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const  FaviconsWebpackPlugin  =  require ('favicons-webpack-plugin')
 // html Files
 const templateFiles = fs
   .readdirSync(environment.paths.source)
@@ -14,7 +14,7 @@ const HtmlPluginEntries = templateFiles.map((template) =>
   new HtmlWebpackPlugin({
     filename: template,
     template: path.resolve(environment.paths.source, template),
-    favicon: path.resolve(environment.paths.source, 'images', 'favicon.ico'),
+    //favicon: path.resolve(environment.paths.source, 'images', 'favicon.ico'),
     inject: true,
     hash: false,
     cache: true,
@@ -54,7 +54,8 @@ module.exports = {
     ),
     new MiniCssExtractPlugin({
       filename: "./css/[name].css" 
-    })
+    }),
+    new FaviconsWebpackPlugin(path.resolve(environment.paths.source, 'images', 'logo.png')) 
   ].concat(HtmlPluginEntries)
 
 }

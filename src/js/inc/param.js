@@ -1,27 +1,15 @@
 /**
- * Function allowing to make AJAX calls with the "GET" method and return in JSON format
+ * Function which retrieves a specified parameter and its value in a url
  *
  * @param {string} url
- * @param {string/array} parameters
+ * @param {string} parameter
  *
- * @returns {array}
+ * @returns {string} value
  */
 
-export const parameters = (url, parameters) => {
-  const ourl = new URL(url)
-  if (parameters.isArray) {
-    for (const element of parameters) {
-      // const result = [element][parameter(ourl, element)]
-      // return result
-      console.log(element)
-    }
-  } else {
-    return parameter(ourl, parameters)
-  }
-}
-
-const parameter = (url, parameter) => {
-  const searchParams = new URLSearchParams(url.search)
+export const parameters = (url, parameter) => {
+  const findUrl = new URL(url)
+  const searchParams = new URLSearchParams(findUrl.search)
   if (searchParams.has(parameter)) {
     const name = searchParams.get(parameter)
     return name

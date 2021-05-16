@@ -71,7 +71,7 @@ const app = {
     targetElement.appendChild(templateClone)
 
     // Update products summary
-    app.updateSummary()
+    app.updateSum()
   },
   /**
      * Delete the product row in the cart table using the input field element
@@ -88,7 +88,7 @@ const app = {
     // Refreshes the item counters on the navbar and the title
     navbar.refreshShopCounter(app.getProductsCount())
     // Updates the product summary
-    app.updateSummary()
+    app.updateSum()
   },
   /**
      * Updates the product line in the cart table
@@ -106,12 +106,12 @@ const app = {
     // Refreshes the item counters on the navbar and the title
     navbar.refreshShopCounter(app.getProductsCount())
     // Updates the product summary
-    app.updateSummary()
+    app.updateSum()
   },
   /**
      * Updates the summary of products in the cart
      */
-  updateSummary: function () {
+  updateSum: function () {
     const totals = document.getElementsByClassName('product__total')
     let productsPrice = 0
 

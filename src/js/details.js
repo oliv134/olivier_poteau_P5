@@ -9,7 +9,12 @@ const app = {
       // if (document.querySelector('.products') !== null) {
       product.init()
 
-      console.log(parameters(window.location.href, 'id'))
+      const id = parameters(window.location.href, 'id')
+      console.log(id)
+      product.getProducts(id).then((response) => {
+        console.log(response)
+        product.displayProduct(response)
+      })
 
       modal.hide('modalCart', '2000')
     }

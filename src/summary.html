@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="" />
-  <meta name="Olivier POTEAU" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
-  <meta name="generator" content="Hugo 0.80.0" />
-  <title>Orinoco</title>
+  <meta name="description" content="This is project 5 of the web developer course at openclassroom" />
+  <meta name="author" content="Olivier POTEAU" />
+  <meta name="generator" content="Webpack" />
+  <title>Orinoco - Récapitulatif</title>
 
   <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" /> -->
 </head>
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top p-2 bg-dark text-white">
+  <nav class="navbar fixed-top p-3 mb-3 navbar-expand-lg navbar-light bg-dark text-white">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="./index.html">
         <img src="./images/logo-w60.png" alt="Logo Orinico" height="30" class="d-inline-block align-text-center" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -25,14 +25,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="index.html">Articles</a>
+            <a class="nav-link active text-white" href="index.html">Articles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Contact</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link text-white disabled" href="#" tabindex="-1" aria-disabled="true">Ma Commande</a>
+            <a class="nav-link text-white" aria-current="page" href="#" tabindex="-1">Ma Commande</a>
           </li>
         </ul>
 
@@ -64,7 +60,7 @@
           </li>
 
           <li class="nav-item me-3 me-lg-0">
-            <a class="nav-link text-white" href="cart.html">
+            <a class="nav-link text-white" href="checkout.html">
               <span><i class="fas fa-shopping-cart shop-icon"></i></span>
               <span class="badge rounded-pill badge-notification bg-danger shop-icon__counter">0</span>
             </a>
@@ -77,95 +73,111 @@
 
 <body>
   <main class="container">
-    <div class="card">
+    <div  id="order__message" class="alert alert-success m-3" role="alert">
+      <div class="row">
+        <div class="col col-1 text-center fs-1">
+          <i class="far fa-thumbs-up"></i>
+        </div>
+        <div class="col">
+          <h4 class="alert-heading"> Merci <span id="order__firstName">John</span> pour votre commande.</h4>
+          <p>Nous venons de vous envoyer un mail de confirmation à <span id="order__email">john@doe.com</span>.</p>
+        </div>
+        <hr>
+        <p class="mb-0">Votre suivi de commande sera bientôt disponible.</p>
+
+      </div>
+    </div>
+    <div  id="order__summary" class="card">
       <div class="row">
 
         <div class="cart col-md-8">
           <div class="title mb-5">
             <div class="row">
               <div class="col">
-                <h4><b>Votre Panier</b></h4>
+                <h4><b>Récapitulatif de votre commande</b></h4>
+                référence: <span id="order__id">##</span>
               </div>
             </div>
           </div>
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col" class="d-none d-lg-inline"></th>
-                <th scope="col">Article</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Quantité</th>
-                <th scope="col">Prix Total</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody id="cart__products"></tbody>
-          </table>
+          <div class="row border-bottom">
+            <div class="row main align-items-center product__row">
+              <div class="col-2 d-none d-lg-inline"></div>
+              <div class="col">Article</div>
+                                      <div class="col-2">Prix Total</div>
+              
+            </div>
+          </div>
 
+          <div id="cart__products">
+            <!-- Cart Row Template -->
+          </div>
 
           <!-- Cart Row Template -->
           <template id="cart__row">
-            <tr class="product__row">
 
-              <th class="d-none d-lg-inline">
+            <div class="row main align-items-center product__row border-top border-bottom">
+              <div class="col-2 d-none d-lg-inline">
                 <img class="img-fluid product__image" src="https://i.imgur.com/yUJweFV.jpeg" />
-              </th>
-              <th>
+              </div>
+              <div class="col">
                 <div class="row text-muted">Appareil photo</div>
                 <div class="row product__name">Name</div>
-              </th>
-              <th class="col-1 p-0">
+              </div>
+              <div class="col-2 p-0">
                 &euro; <span class="product__price"></span>
-              </th>
-              <th class="col-4 col-lg-3 text-center product__quantity">
-                <a href="#" class="minus"><i class="far fa-minus-square"></i></a><input type="test"
-                  class="form-control col-sm-2 w-25 d-inline p-0 m-0 text-center" id="quantity" name="quantity"
-                  class="quantity" placeholder="1" aria-label="quantity" aria-describedby="basic-addon1" /><a href="#"
-                  class="plus"><i class="far fa-plus-square"></i></a>
-              </th>
-              <th class="col-2">
-                &euro; <span class="product__total"></span>
-              </th>
+              </div>
+              
+          
 
-              <th class="col-1 trash">
-                <i class="fas fa-trash-alt"></i>
-              </th>
+           
+            </div>
 
-            </tr>
           </template>
           <!-- Cart Row Template -->
 
           <div class="back-to-shop">
-            <a href="index.html"></i></a><span class="text-muted"><i class="fas fa-backward"></i> Retour aux articles</span>
+            <a href="index.html"></i><span class="text-muted"><i class="fas fa-backward"></i> Retour aux
+              articles</span></a>
           </div>
         </div>
+
         <div class="col-md-4 summary">
-          <div>
-            <h5><b>Résumé de la commande</b></h5>
-          </div>
-          <hr />
+
           <div class="row">
             <div class="col" style="padding-left: 0">3 Articles</div>
             <div class="col text-right subtotal__price">&euro; 132.00</div>
           </div>
-          <form>
-            <p>Frais de Port</p>
-            <select>
-              <option class="text-muted">
-                Livraison Standard - &euro;0.00
-              </option>
-            </select>
-            <p>Code Promo</p>
-            <input id="code" placeholder="Entrez votre code" />
-          </form>
+
+          <p>Frais de Port</p>
+          Livraison Standard - &euro;0.00
+          <p>Code Promo</p>
+          Aucun code renseigné
+
           <div class="row" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0">
             <div class="col">Prix Total</div>
             <div class="col text-right total__price">&euro; 137.00</div>
           </div>
-          <button class="btn btn-primary">Commandez</button>
+
         </div>
       </div>
+    </div>
+
+    <div id="order__no" class="alert alert-warning m-3 d-none" role="alert">
+      <div class="row">
+        <div class="col col-2 col-md-1 text-center fs-1">
+          <i class="fas fa-box-open"></i>
+        </div>
+        <div class="col">
+          <h4 class="alert-heading">Vous n'avez réalisé aucune commande.</h4>
+          <p>Devenez un aventurier et explorez notre gallerie de produits.</p>
+        </div>
+        <hr>
+        <a href="index.html"><button type="button" class="btn btn-warning">Allez je me lance...</button></a>
+
+      </div>
+    </div>
+
     </div>
   </main>
 

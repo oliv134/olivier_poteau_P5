@@ -4,8 +4,8 @@ import forms from './inc/form'
 const app = {
   init () {
     if (document.title.includes('Commande') === true) {
-      product.displayCart()
       product.init()
+      product.displayCart()
       forms.init()
     }
   }

@@ -1,5 +1,6 @@
 import product from './inc/product'
 import modal from './inc/modal'
+import { parameters } from './inc/param'
 const app = {
   init () {
     // Retrieves the products from the database and calls the associated method to display them
@@ -8,12 +9,8 @@ const app = {
       // if (document.querySelector('.products') !== null) {
       product.init()
 
-      const url = new URL(window.location.href)
-      const searchParams = new URLSearchParams(url.search)
-      if (searchParams.has('id')) {
-        const name = searchParams.get('id')
-        console.log(name)
-      }
+      console.log(parameters(window.location.href, 'id'))
+
       modal.hide('modalCart', '2000')
     }
   }

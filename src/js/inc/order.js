@@ -33,7 +33,7 @@ const app = {
   getOrder () {
     return localStorage.getItem('order') ?? '{}'
   },
-  displayOrder: function (product, count) {
+  displayOrder: function (product) {
     const template = document.querySelector('#cart__row')
     const targetElement = document.querySelector('#cart__products')
 
@@ -55,8 +55,31 @@ const app = {
     targetElement.appendChild(templateClone)
 
     // Update products summary
-    app.updateSum()
+    // app.updateSum()
+  },
+  deleterOrder () {
+    localStorage.removeItem('order')
+  },
+  updateSum: function () {
+    const totals = document.getElementsByClassName('product__price')
+    let productsPrice = 0
+
+    // Add all the total prices of the products
+    for (const total of totals) {
+      productsPrice += parseInt(total.textContent.replace('€', ''), 10)
+    }
+
+    // Updates the subtotal and total in the summary
+    const productsTotal = app.getProductsCount()
+    document.querySelector('.products__total').textContent = productsTotal + ' article' + (productsTotal > 1 ? 's' : '')
+    document.querySelector('.subtotal__price').textContent = '€ ' + productsPrice
+    document.querySelector('.total__price').textContent = '€ ' + productsPrice
+  },
+  getProductsCount () {
+    const summary = JSON.parse(app.getOrder())
+    return summary.products.length
   }
+
 }
 
 export default app

@@ -10,9 +10,9 @@ const app = {
       product.init()
 
       const id = parameters(window.location.href, 'id')
-      console.log(id)
+      // console.log(id)
       product.getProducts(id).then((response) => {
-        console.log(response)
+      //  console.log(response)
         product.displayProduct(response)
       })
 

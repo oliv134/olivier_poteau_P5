@@ -20,6 +20,7 @@ const app = {
      * Displays all products retrieved earlier from the database on the .getProducts()
      */
   displayProducts (products) {
+    console.log(products)
     for (const product of products) {
       app.displayProduct(product)
     }
@@ -47,7 +48,14 @@ const app = {
     templateClone.querySelector('.product__name').textContent = product.name
     templateClone.querySelector('.product__description').textContent = product.description
     templateClone.querySelector('.product__price').textContent = (product.price / 100) + '€'
+    console.log()
+    for (const options of product.lenses) {
+      const newDiv = document.createElement('option')
 
+      newDiv.className = 'options_value'
+      newDiv.innerText = options
+      templateClone.getElementById('options').appendChild(newDiv)
+    }
     // Add the item's clone to the parent 'products'
     targetElement.appendChild(templateClone)
   },

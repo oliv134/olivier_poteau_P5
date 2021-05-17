@@ -4,6 +4,7 @@ const app = {
   init () {
     app.forms = document.getElementsByClassName('needs-validation')
     document.getElementById('zip').addEventListener('focusout', event => { app.loadCities(event) })
+    document.getElementById('zip').addEventListener('change', event => { app.loadCities(event) })
     // Loop over them and prevent submission
     Array.prototype.slice.call(app.forms)
       .forEach(function (form) {
@@ -17,12 +18,15 @@ const app = {
           form.classList.add('was-validated')
         }, false)
       })
+
     document.addEventListener('submit', event => app.handleFormSubmit(event))
   },
   handleFormSubmit (event) {
     event.preventDefault()
     // Retrieve the products and place their identifier in a table
-    order.setOrder()
+    if (validateEmail(document.getElementById('email').value)) {
+      order.setOrder()
+    }
   },
   loadCities (event) {
     const zipcodeEl = document.getElementById('zip')
@@ -36,7 +40,7 @@ const app = {
           a.remove()
         })
         const targetElement = document.getElementById('city')
-        console.log(cities)
+
         for (const city of cities) {
           const newDiv = document.createElement('option')
           newDiv.className = 'state__value'
@@ -51,5 +55,8 @@ const app = {
       })
   }
 }
-
+function validateEmail (email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(String(email).toLowerCase())
+}
 export default app

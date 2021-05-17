@@ -121,6 +121,8 @@ const app = {
     }
 
     // Updates the subtotal and total in the summary
+    const productsTotal = app.getProductsCount()
+    document.querySelector('.products__total').textContent = productsTotal + ' article' + (productsTotal > 1 ? 's' : '')
     document.querySelector('.subtotal__price').textContent = '€ ' + productsPrice
     document.querySelector('.total__price').textContent = '€ ' + productsPrice
   },

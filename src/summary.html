@@ -75,7 +75,7 @@
   <main class="container">
     <div  id="order__message" class="alert alert-success m-3" role="alert">
       <div class="row">
-        <div class="col col-1 text-center fs-1">
+        <div class="col col-2 col-md-1 text-center fs-1">
           <i class="far fa-thumbs-up"></i>
         </div>
         <div class="col">
@@ -83,8 +83,10 @@
           <p>Nous venons de vous envoyer un mail de confirmation à <span id="order__email">john@doe.com</span>.</p>
         </div>
         <hr>
+        <div class="col col-2 col-md-1"> </div>
+        <div class="col">
         <p class="mb-0">Votre suivi de commande sera bientôt disponible.</p>
-
+      </div>
       </div>
     </div>
     <div  id="order__summary" class="card">
@@ -145,7 +147,7 @@
         <div class="col-md-4 summary">
 
           <div class="row">
-            <div class="col" style="padding-left: 0">3 Articles</div>
+            <div class="col products__total" style="padding-left: 0">x Articles</div>
             <div class="col text-right subtotal__price">&euro; 132.00</div>
           </div>
 
@@ -158,7 +160,7 @@
             <div class="col">Prix Total</div>
             <div class="col text-right total__price">&euro; 137.00</div>
           </div>
-
+          <button type="button" id="read" class="w-100 btn btn-primary"><i class="fas fa-check"></i> Ok j'ai lu</button>
         </div>
       </div>
     </div>

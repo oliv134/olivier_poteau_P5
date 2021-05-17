@@ -1,9 +1,6 @@
 import { post } from './fetch'
 import cart from './cart'
 const app = {
-  init () {
-    console.log('cést commadé')
-  },
   setOrder () {
     const productsObject = JSON.parse(cart.getProducts())
     const products = []

@@ -20,7 +20,6 @@ const app = {
      * Displays all products retrieved earlier from the database on the .getProducts()
      */
   displayProducts (products) {
-    console.log(products)
     for (const product of products) {
       app.displayProduct(product)
     }
@@ -48,7 +47,7 @@ const app = {
     templateClone.querySelector('.product__name').textContent = product.name
     templateClone.querySelector('.product__description').textContent = product.description
     templateClone.querySelector('.product__price').textContent = (product.price / 100) + '€'
-    console.log()
+
     for (const options of product.lenses) {
       const newDiv = document.createElement('option')
 
@@ -69,6 +68,7 @@ const app = {
           cart.displayProduct(response, products[product])
         })
     }
+    cart.updateSum()
   }
 
 }

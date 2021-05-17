@@ -9,7 +9,6 @@ const app = {
     Array.prototype.slice.call(app.forms)
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
-          console.log(form)
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
@@ -30,7 +29,6 @@ const app = {
   },
   loadCities (event) {
     const zipcodeEl = document.getElementById('zip')
-    console.log(zipcodeEl.value)
 
     event.preventDefault()
 

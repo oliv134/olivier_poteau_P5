@@ -10,7 +10,6 @@ const app = {
       product.getProducts()
         .then((response) => {
           product.displayProducts(response)
-          console.log(response)
         })
       modal.hide('modalCart', '2000')
     }

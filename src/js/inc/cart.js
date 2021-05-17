@@ -37,7 +37,7 @@ const app = {
    * @param {Object} product
    * @param {number} count
    */
-  displayProduct: function (product, count) {
+  displayProduct (product, count) {
     const template = document.querySelector('#cart__row')
     const targetElement = document.querySelector('#cart__products')
 
@@ -78,7 +78,7 @@ const app = {
      *
      * @param {Object} inputElement
      */
-  deleteProductRow: function (inputElement) {
+  deleteProductRow (inputElement) {
     const productRow = inputElement.closest('.product__row')
 
     // Deletes the product in the localStorage associated with the identifier
@@ -95,7 +95,7 @@ const app = {
      *
      * @param {Object} inputElement
      */
-  updateProductRow: function (inputElement) {
+  updateProductRow (inputElement) {
     const productRow = inputElement.closest('.product__row')
     const productPrice = productRow.querySelector('.product__price')
 
@@ -106,25 +106,31 @@ const app = {
     // Refreshes the item counters on the navbar and the title
     navbar.refreshShopCounter(app.getProductsCount())
     // Updates the product summary
-    app.updateSum()
   },
   /**
      * Updates the summary of products in the cart
      */
-  updateSum: function () {
-    const totals = document.getElementsByClassName('product__total')
-    let productsPrice = 0
-
-    // Add all the total prices of the products
-    for (const total of totals) {
-      productsPrice += parseInt(total.textContent.replace('€', ''), 10)
-    }
-
+  updateSum () {
     // Updates the subtotal and total in the summary
     const productsTotal = app.getProductsCount()
-    document.querySelector('.products__total').textContent = productsTotal + ' article' + (productsTotal > 1 ? 's' : '')
-    document.querySelector('.subtotal__price').textContent = '€ ' + productsPrice
-    document.querySelector('.total__price').textContent = '€ ' + productsPrice
+
+    if (productsTotal === 0) {
+      document.getElementById('cart__show').classList.add('d-none')
+      document.getElementById('cart__identity').classList.add('d-none')
+      document.getElementById('cart__no').classList.remove('d-none')
+    } else {
+      const totals = document.getElementsByClassName('product__total')
+      let productsPrice = 0
+
+      // Add all the total prices of the products
+      for (const total of totals) {
+        productsPrice += parseInt(total.textContent.replace('€', ''), 10)
+      }
+
+      document.querySelector('.products__total').textContent = productsTotal + ' article' + (productsTotal > 1 ? 's' : '')
+      document.querySelector('.subtotal__price').textContent = '€ ' + productsPrice
+      document.querySelector('.total__price').textContent = '€ ' + productsPrice
+    }
   },
 
   /**

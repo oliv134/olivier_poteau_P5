@@ -7,11 +7,11 @@ const app = {
    * @function init
    */
   init () {
-    navbar.refreshShopCounter(app.getProductsCount())
     const storage = app.getProducts()
     if (storage === null || storage === '') {
       localStorage.setItem('products', JSON.stringify({}))
     }
+    navbar.refreshShopCounter(app.getProductsCount())
   },
   /**
    * Returns the products id contained in the localstorage
@@ -153,7 +153,7 @@ const app = {
     localStorage.setItem('products', JSON.stringify(products))
   },
 
-  /** 
+  /**
    * Updates the localstorage with the number of items for a product with the given ID
    * @function updateProductCount
    * @param {string} productId Product ID
@@ -165,7 +165,7 @@ const app = {
     localStorage.setItem('products', JSON.stringify(products))
   },
 
-  /** 
+  /**
    * Removes from localstorage a product with the given ID
    * @function deleteProduct
    * @param {string} productId Product ID

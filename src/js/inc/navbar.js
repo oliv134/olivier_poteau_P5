@@ -22,7 +22,7 @@ const navbar = {
 
   /**
    * Refreshes the items in the navbar cart counter
-   * @function refreshShopCounter 
+   * @function refreshShopCounter
    * @param {number} productsCount
    */
   refreshShopCounter (productsCount) {

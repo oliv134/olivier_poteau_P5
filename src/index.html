@@ -1,143 +1,202 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="This is project 5 of the web developer course at openclassroom" />
-  <meta name="author" content="Olivier POTEAU" />
-  <meta name="generator" content="Webpack" />
-  <title>Orinoco - Accueil</title>
-</head <header>
-<!-- NavBar -->
-<nav class="navbar fixed-top p-3 mb-3 navbar-expand-lg navbar-light bg-dark text-white">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="./images/logo-w60.png" alt="Logo Orinico" height="30" class="d-inline-block align-text-center" />
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="index.html">Articles</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link text-white" href="summary.html" tabindex="-&">
-            Ma Commande</a>
-        </li>
-      </ul>
-
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">
-          <i class="fas fa-search"></i>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="This is project 5 of the web developer course at openclassroom"
+    />
+    <meta name="author" content="Olivier POTEAU" />
+    <meta name="generator" content="Webpack" />
+    <title>Orinoco - Accueil</title>
+  </head>
+  <header>
+    <!-- NavBar -->
+    <nav
+      class="navbar fixed-top p-3 mb-3 navbar-expand-lg navbar-light bg-dark text-white"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./images/logo-w60.png"
+            alt="Logo Orinico"
+            height="30"
+            class="d-inline-block align-text-center"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </form>
-    </div>
-    <div class="text-end">
-      <ul class="navbar-nav d-flex flex-row">
-        <!-- Icon dropdown -->
-        <li class="nav-item me-3 me-lg-0 dropdown">
-          <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user"></i>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Mon compte</a></li>
-            <li><a class="dropdown-item" href="summary.html">Ma Commande</a></li>
-            <li>
-              <hr class="dropdown-divider" />
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link active text-white"
+                aria-current="page"
+                href="index.html"
+                >Articles</a
+              >
             </li>
-            <li>
-              <a class="dropdown-item" href="#">Déconnexion</a>
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="summary.html" tabindex="-&">
+                Ma Commande</a
+              >
             </li>
           </ul>
-        </li>
 
-        <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link text-white" href="checkout.html">
-            <span><i class="fas fa-shopping-cart shop-icon"></i></span>
-            <span class="badge rounded-pill badge-notification bg-danger shop-icon__counter">0</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</header>
-
-<body>
-  <main class="container mb-5">
-    <div class="products row row-cols-1 row-cols-md-3 g-4 justify-content-between"></div>
-  </main>
-  <!-- Template -->
-  <template id="product-card">
-    <div class="col d-flex">
-      <div class="product card h-100 shadow bg-body">
-        <div>
-          <a href="#" class="product__image">
-            <img src="./images/bg.jpg" class="card-img-top p-2" alt="..." />
-          </a>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Recherche"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
         </div>
-        <div class="card-body py-0">
-          <h5 class="card-title product__name">Product Name</h5>
-          <p class="card-text product__description">
-            This is a production description
-          </p>
-
-        </div>
-        <div class="card-footer">
-          <label for="options" class="form-label">Objectifs</label>
-          <select class="form-select p-0" id="options">
-          </select>
-          <div class="d-flex justify-content-between align-items-center mt-3">
-            <div class="btn-group">
-              <a href="#" class="view">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  <i class="far fa-eye"></i>
-                </button>
+        <div class="text-end">
+          <ul class="navbar-nav d-flex flex-row">
+            <!-- Icon dropdown -->
+            <li class="nav-item me-3 me-lg-0 dropdown">
+              <a
+                class="nav-link text-white dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
               </a>
-              <button type="button" class="shop btn btn-sm btn-secondary" data-bs-toggle="modal"
-                data-bs-target="#modalCart">
-                <i class="fas fa-cart-arrow-down"></i>
-              </button>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Mon compte</a></li>
+                <li>
+                  <a class="dropdown-item" href="summary.html">Ma Commande</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Déconnexion</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link text-white" href="checkout.html">
+                <span><i class="fas fa-shopping-cart shop-icon"></i></span>
+                <span
+                  class="badge rounded-pill badge-notification bg-danger shop-icon__counter"
+                  >0</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <body>
+    <main class="container mb-5">
+      <div
+        class="products row row-cols-1 row-cols-md-3 g-4 justify-content-between"
+      ></div>
+    </main>
+    <!-- Template -->
+    <template id="product-card">
+      <div class="col d-flex">
+        <div class="product card h-100 shadow bg-body">
+          <div>
+            <a href="#" class="product__image">
+              <img src="./images/bg.jpg" class="card-img-top p-2" alt="..." />
+            </a>
+          </div>
+          <div class="card-body py-0">
+            <h5 class="card-title product__name">Product Name</h5>
+            <p class="card-text product__description">
+              This is a production description
+            </p>
+          </div>
+          <div class="card-footer">
+            <label for="options" class="form-label">Objectifs</label>
+            <select class="form-select p-0" id="options"></select>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="btn-group">
+                <a href="#" class="view">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                  >
+                    <i class="far fa-eye"></i>
+                  </button>
+                </a>
+                <button
+                  type="button"
+                  class="shop btn btn-sm btn-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalCart"
+                >
+                  <i class="fas fa-cart-arrow-down"></i>
+                </button>
+              </div>
+              <small class="product__price">xx €</small>
             </div>
-            <small class="product__price">xx €</small>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Modal - Add to the cart-->
+    <div
+      class="modal fade"
+      id="modalCart"
+      tabindex="-1"
+      aria-labelledby="modalCartAdd"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCartAdd">Merci...</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Votre article a bien été ajouté au panier
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Continuez mes achats
+            </button>
+            <a href="./checkout.html">
+              <button type="button" class="btn btn-primary">
+                Voir le Panier
+              </button>
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </template>
-
-  <!-- Modal - Add to the cart-->
-  <div class="modal fade" id="modalCart" tabindex="-1" aria-labelledby="modalCartAdd" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalCartAdd">Merci...</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Votre article a bien été ajouté au panier
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Continuez mes achats
-          </button>
-          <a href="./checkout.html">
-            <button type="button" class="btn btn-primary">
-              Voir le Panier
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>

@@ -17,14 +17,20 @@ const app = {
   },
 
   /**
-     * Displays all products retrieved earlier from the database on the .getProducts()
-     */
+    * Displays all products retrieved earlier from the database on the .getProducts()
+    *
+    * @param  {} products
+    */
   displayProducts (products) {
     for (const product of products) {
       app.displayProduct(product)
     }
   },
-
+  /**
+   * Display a product in a template
+   * @function displayProduct
+   * @param  {} product
+   */
   displayProduct (product) {
     // Create a clone of the template and fill in all the information collected earlier
     const template = document.querySelector('#product-card')
@@ -58,14 +64,18 @@ const app = {
     // Add the item's clone to the parent 'products'
     targetElement.appendChild(templateClone)
   },
-
+  /**
+   * Show Cart
+   * @function displayCart
+   */
   displayCart () {
     const products = JSON.parse(cart.getProducts())
 
     for (const product in products) {
       app.getProducts(product)
         .then(response => {
-          cart.displayProduct(response, products[product])
+          response.count = products[product]
+          cart.displayProduct(response)
         })
     }
     cart.updateSum()

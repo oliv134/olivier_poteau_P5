@@ -1,9 +1,8 @@
 /**
  * Function which retrieves a specified parameter and its value in a url
- *
+ * @function parameters
  * @param {string} url
  * @param {string} parameter
- *
  * @returns {string} value
  */
 

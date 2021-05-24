@@ -24,7 +24,6 @@ const app = {
   },
   displaySummary () {
     const summary = JSON.parse(order.getOrder())
-
     for (const product of summary.products) {
       order.displayOrder(product)
     }

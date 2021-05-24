@@ -8,13 +8,10 @@ const app = {
     if (document.title.includes('Article') === true) {
       // if (document.querySelector('.products') !== null) {
       product.init()
-
       const id = parameters(window.location.href, 'id')
-      console.log(id)
       product.getProducts(id).then((response) => {
         product.displayProduct(response)
       })
-
       modal.hide('modalCart', '2000')
     }
   }

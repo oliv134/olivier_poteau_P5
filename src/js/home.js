@@ -14,7 +14,6 @@ const app = {
       modal.hide('modalCart', '2000')
     }
   }
-
 }
 
 document.addEventListener('DOMContentLoaded', app.init)

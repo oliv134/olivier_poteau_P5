@@ -1,6 +1,10 @@
 import { post } from './fetch'
 import cart from './cart'
 const app = {
+  /**
+   * Create an order
+   * @function setOrder
+   */
   setOrder () {
     const productsObject = JSON.parse(cart.getProducts())
     const products = []
@@ -27,10 +31,46 @@ const app = {
         window.location.href = 'summary.html'
       })
   },
+  /**
+   * Retrieves the command information from the localstorage
+   * @function getOrder
+   * @returns {object[]}
+   */
   getOrder () {
     return localStorage.getItem('order') ?? '{}'
   },
-  displayOrder: function (product) {
+  /**
+   * Calculate and display the number of products and totals
+   * @function updateSum
+   */
+  updateSum () {
+    const totals = document.getElementsByClassName('product__price')
+    let productsPrice = 0
+
+    // Add all the total prices of the products
+    for (const total of totals) {
+      productsPrice += parseInt(total.textContent.replace('€', ''), 10)
+    }
+
+    // Updates the subtotal and total in the summary
+    const productsTotal = app.getProductsCount()
+    document.querySelector('.products__total').textContent = productsTotal + ' article' + (productsTotal > 1 ? 's' : '')
+    document.querySelector('.subtotal__price').textContent = '€ ' + productsPrice
+    document.querySelector('.total__price').textContent = '€ ' + productsPrice
+  },
+  /**
+   * Clear command in localstorage
+   * @function deleteOrder
+   */
+  deleterOrder () {
+    localStorage.removeItem('order')
+  },
+  /**
+   * Display the order in a template
+   * @function displayOrder
+   * @param  {} product
+   */
+  displayOrder (product) {
     const template = document.querySelector('#cart__row')
     const targetElement = document.querySelector('#cart__products')
 
@@ -54,24 +94,11 @@ const app = {
     // Update products summary
     // app.updateSum()
   },
-  deleterOrder () {
-    localStorage.removeItem('order')
-  },
-  updateSum: function () {
-    const totals = document.getElementsByClassName('product__price')
-    let productsPrice = 0
-
-    // Add all the total prices of the products
-    for (const total of totals) {
-      productsPrice += parseInt(total.textContent.replace('€', ''), 10)
-    }
-
-    // Updates the subtotal and total in the summary
-    const productsTotal = app.getProductsCount()
-    document.querySelector('.products__total').textContent = productsTotal + ' article' + (productsTotal > 1 ? 's' : '')
-    document.querySelector('.subtotal__price').textContent = '€ ' + productsPrice
-    document.querySelector('.total__price').textContent = '€ ' + productsPrice
-  },
+  /**
+   * Returns the number of products contained in the order
+   * @function getProductsCount
+   * @returns {number} Number of products
+   */
   getProductsCount () {
     const summary = JSON.parse(app.getOrder())
     return summary.products.length

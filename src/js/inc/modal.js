@@ -5,9 +5,9 @@ import * as bootstrap from 'bootstrap'
 const modal = {
   /**
    * Hide modal view after x seconds
-   *
-   * @param {string} idModal
-   * @param {number} Duration
+   * @function hide
+   * @param {string} idModal Modal window id
+   * @param {number} duration=2000 Window display time
    */
   hide (idModal, duration = 2000) {
     const myModalEl = document.getElementById(idModal)

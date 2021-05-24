@@ -1,6 +1,11 @@
 import navbar from './navbar'
 
 const app = {
+  /**
+   * Basket initialization
+   * Refresh the item counter in the navbar and define an item products in the local strorage if absent
+   * @function init
+   */
   init () {
     navbar.refreshShopCounter(app.getProductsCount())
     const storage = app.getProducts()
@@ -9,35 +14,20 @@ const app = {
     }
   },
   /**
-   * Manage the addition of a product when clicking on the shopping cart button
-   *
-   * @param {MouseEvent} event
-   */
-
-  handleShopButtonClick (event) {
-    // Remove default behavior of link
-    event.preventDefault()
-
-    // Add product to localStorage
-    app.addProduct(this.dataset.id)
-
-    // Refreshes the cart counters
-    navbar.refreshShopCounter(app.getProductsCount())
-  },
-  /**
-   * Transmet dans l'objet la liste des produits contenus dans localStorage
-   * @returns { object}
+   * Returns the products id contained in the localstorage
+   * @function getProducts
+   * @returns {object}
    */
   getProducts () {
     return localStorage.getItem('products') ?? '{}'
   },
   /**
-   * Displays the product lines in the cart table with the information retrieved earlier
-   *
+   * Add a product in a the cart table row
+   * @function displayProduct
    * @param {Object} product
    * @param {number} count
    */
-  displayProduct (product, count) {
+  displayProduct (product) {
     const template = document.querySelector('#cart__row')
     const targetElement = document.querySelector('#cart__products')
 
@@ -58,15 +48,14 @@ const app = {
 
     // Product quantity buttons and input
     const quantityInput = templateClone.querySelector('#quantity')
-
     quantityInput.addEventListener('change', app.handleQuantityChange)
     templateClone.querySelector('.product__quantity .minus').addEventListener('click', app.handleLessButtonClick)
     templateClone.querySelector('.product__quantity .plus').addEventListener('click', app.handleMoreButtonClick)
     templateClone.querySelector('.trash').addEventListener('click', app.handleTrashButtonClick)
-    quantityInput.value = count
+    quantityInput.value = product.count
 
     // Product total price
-    templateClone.querySelector('.product__total').textContent = ((product.price / 100) * count)
+    templateClone.querySelector('.product__total').textContent = ((product.price / 100) * product.count)
 
     targetElement.appendChild(templateClone)
 
@@ -74,10 +63,10 @@ const app = {
     app.updateSum()
   },
   /**
-     * Delete the product row in the cart table using the input field element
-     *
-     * @param {Object} inputElement
-     */
+   * Delete the product row in the cart table using the input field element
+   * @function deleteProductRow
+   * @param {Object} inputElement
+  */
   deleteProductRow (inputElement) {
     const productRow = inputElement.closest('.product__row')
 
@@ -91,10 +80,10 @@ const app = {
     app.updateSum()
   },
   /**
-     * Updates the product line in the cart table
-     *
-     * @param {Object} inputElement
-     */
+   * Updates the product line in the cart table
+   * @function updateProductRow
+   * @param {Object} inputElement
+  */
   updateProductRow (inputElement) {
     const productRow = inputElement.closest('.product__row')
     const productPrice = productRow.querySelector('.product__price')
@@ -108,10 +97,10 @@ const app = {
     // Updates the product summary
   },
   /**
-     * Updates the summary of products in the cart
-     */
+   * Updates the subtotal and total in the summary
+   * @function updateSum
+  */
   updateSum () {
-    // Updates the subtotal and total in the summary
     const productsTotal = app.getProductsCount()
 
     if (productsTotal === 0) {
@@ -134,8 +123,8 @@ const app = {
   },
 
   /**
-   * Retourne le total des produits contenus dans le localStorage
-   *
+   * Returns the total of the products contained in the localStorage
+   * @function getProductsCount
    * @returns {number} result
    */
   getProductsCount () {
@@ -149,8 +138,8 @@ const app = {
   /**
    * Adds a product to localStorage by incrementing the value or creating a new
    * key-value association
-   *
-   * @param {string} productId
+   * @function addProduct
+   * @param {string} productId Prodyct Id
    */
   addProduct (productId) {
     const products = JSON.parse(app.getProducts())
@@ -164,11 +153,11 @@ const app = {
     localStorage.setItem('products', JSON.stringify(products))
   },
 
-  /**
-   * Updates the item count for a product with the given id
-   *
-   * @param {string} productId
-   * @param {number} count
+  /** 
+   * Updates the localstorage with the number of items for a product with the given ID
+   * @function updateProductCount
+   * @param {string} productId Product ID
+   * @param {number} count Number of products
    */
   updateProductCount (productId, count) {
     const products = JSON.parse(app.getProducts())
@@ -176,10 +165,10 @@ const app = {
     localStorage.setItem('products', JSON.stringify(products))
   },
 
-  /** fetchProduct
-   * Efface un produit defini par son id
-   *
-   * @param {string} productId
+  /** 
+   * Removes from localstorage a product with the given ID
+   * @function deleteProduct
+   * @param {string} productId Product ID
    */
   deleteProduct (productId) {
     const products = JSON.parse(app.getProducts())
@@ -188,43 +177,50 @@ const app = {
   },
 
   /**
-   * Checks if the product object in localStorage is emptyfetchProduct
-   *
+   * Checks in the localstorage if the produced object is empty
+   * @function productsIsEmpty
    * @returns {boolean}
    */
   productsIsEmpty () {
-    /* const products = JSON.parse(localStorageData.getProducts())
-    let propertiesCounter = 0
-
-    // Adds the number of properties of the product object
-    for (const product in products) {
-      propertiesCounter++
-    }
-
-    // return propertiesCounter === 0 */
     return app.getProductsCount === 0
-    // return localStorage.getItem("products") === null)
+  },
+  /**
+   * Manage the addition of a product when clicking on the shopping cart button
+   * @function handleShopButtonClick
+   * @param {MouseEvent} event
+   */
+  handleShopButtonClick (event) {
+    // Remove default behavior of link
+    event.preventDefault()
+
+    // Add product to localStorage
+    app.addProduct(this.dataset.id)
+
+    // Refreshes the cart counters
+    navbar.refreshShopCounter(app.getProductsCount())
   },
   /**
    * Handles the quantity change in the input field of each of the products present in the cart table
-   *
+   * @function handleQuantityChange
    * @param {Event} event
    */
-  handleQuantityChange: function (event) {
+  handleQuantityChange (event) {
     const inputElement = event.target
     if (inputElement.value <= 0) {
       app.deleteProductRow(inputElement)
     } else {
       app.updateProductRow(inputElement)
     }
+    // Updates the product summary
+    app.updateSum()
   },
 
   /**
    * Subtracts the quantity from the input element and triggers the associated 'change' event
-   *
+   * @funciton handleLessButtonClick
    * @param {MouseEvent} event
    */
-  handleLessButtonClick: function (event) {
+  handleLessButtonClick (event) {
     event.preventDefault()
     const quantityInput = event.target.parentNode.parentNode.querySelector('#quantity')
     quantityInput.value--
@@ -236,10 +232,10 @@ const app = {
 
   /**
    * Adds the quantity from the input element and triggers the associated 'change' event
-   *
+   * @funciton handleMoreButtonClick
    * @param {MouseEvent} event
    */
-  handleMoreButtonClick: function (event) {
+  handleMoreButtonClick (event) {
     event.preventDefault()
     const quantityInput = event.target.parentNode.parentNode.querySelector('#quantity')
     quantityInput.value++
@@ -250,12 +246,11 @@ const app = {
   },
   /**
    * Adds the quantity from the input element and triggers the associated 'change' event
-   *
+   * @function handleTrashButtonClick
    * @param {MouseEvent} event
    */
-  handleTrashButtonClick: function (event) {
+  handleTrashButtonClick (event) {
     const inputElement = event.target
-
     app.deleteProductRow(inputElement)
   }
 }

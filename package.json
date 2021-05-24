@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.build.config.js",
     "build:es5": "cross-env NODE_ENV=production webpack --config config/webpack.build.es5.config.js",
     "prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js",
-    "prod:es5": "cross-env NODE_ENV=production webpack --config config/webpack.prod.es5.config.js"
+    "prod:es5": "cross-env NODE_ENV=production webpack --config config/webpack.prod.es5.config.js",
+    "doc": "jsdoc -d docs ./src/js/inc/*.js"
   },
   "author": "Olivier POTEAU",
   "license": "ISC",
@@ -31,6 +32,7 @@
     "favicons-webpack-plugin": "^5.0.2",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
+    "jsdoc": "^3.6.7",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss": "^8.2.15",
     "postcss-loader": "^5.3.0",

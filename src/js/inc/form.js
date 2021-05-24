@@ -1,13 +1,18 @@
 import city from './city'
 import order from './order'
+
 const app = {
+  /**
+   * Initializes form
+   * @function init
+   */
   init () {
     app.forms = document.getElementsByClassName('needs-validation')
     document.getElementById('zip').addEventListener('focusout', (event) => {
-      app.loadCities(event)
+      app.displayCities(event)
     })
     document.getElementById('zip').addEventListener('change', (event) => {
-      app.loadCities(event)
+      app.displayCities(event)
     })
     // Loop over them and prevent submission
     Array.prototype.slice.call(app.forms).forEach((form) => {
@@ -18,11 +23,14 @@ const app = {
       )
     })
   },
+  /**
+   * Check the form data and create the order if necessary
+   * @function handleFormSubmit
+   * @param  {} event
+   */
   handleFormSubmit (event) {
     event.preventDefault()
-
     const formType = event.target.getElementsByTagName('input')
-
     // Retrieve the products and place their identifier in a table
     let formValid = true
     Array.prototype.slice.call(formType).forEach((form) => {
@@ -73,17 +81,21 @@ const app = {
     })
     if (!event.target.checkValidity()) {
       event.target.classList.add('was-validated')
-
       formValid = false
     }
     if (formValid) { order.setOrder() }
   },
-  loadCities (event) {
+  /**
+   * Returns a list of city with the given postal code
+   * @function displayCities
+   * @param  {string} event
+   */
+  displayCities (event) {
     const zipcodeEl = document.getElementById('zip')
 
     event.preventDefault()
 
-    city.getCitys(zipcodeEl.value).then((cities) => {
+    city.getCities(zipcodeEl.value).then((cities) => {
       document.querySelectorAll('.state__value').forEach((a) => {
         a.remove()
       })
@@ -99,18 +111,42 @@ const app = {
     })
   }
 }
+/**
+ * Test if an email is valid
+ * @function validateEmail
+ * @param  {string} text Email to test
+ * @returns {boolean}
+ */
 const validateEmail = (text) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return re.test(String(text))
 }
+/**
+ * Test if the character string contains only letters
+ * @function validateText
+ * @param  {string} text
+ * @returns {boolean}
+ */
 const validateText = (text) => {
   const re = /^(([a-zA-ZÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ]+))$/
   return re.test(String(text))
 }
+/**
+ * Test if the character string contains only numbers
+ * @function validateNumeric
+ * @param {string} text
+ * @returns {boolean}
+ */
 const validateNumeric = (text) => {
   const re = /^(([0-9]+))$/
   return re.test(String(text))
 }
+/**
+ * Test if the character string contains only letters and / or numbers
+ * @function validateAlphanumeric
+ * @param  {string} text
+ * @returns {boolean}
+ */
 const validateAlphanumeric = (text) => {
   const re = /^(([a-zA-Z 0-9ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ]+))$/
   return re.test(String(text))

@@ -2,14 +2,18 @@
  * Object allowing the handling of events related to the navigation bar
  */
 const navbar = {
+  /**
+   * Navbar initialisation
+   * @function init
+   */
   init () {
     const navbarToggleButtonElement = document.querySelector('#navbar-toggle')
-
     navbarToggleButtonElement.addEventListener('click', navbar.onNavbarToggleClick)
   },
 
   /**
    * Toggles 'visible' class, which lets you expand the navigation menu on a mobile device
+   * @function onNavbarToggleClick
    */
   onNavbarToggleClick () {
     const navbarMobileTargetElement = document.querySelector('#navbar-mobile')
@@ -17,8 +21,8 @@ const navbar = {
   },
 
   /**
-   * Refreshes the cart counter elements on the site header
-   *
+   * Refreshes the items in the navbar cart counter
+   * @function refreshShopCounter 
    * @param {number} productsCount
    */
   refreshShopCounter (productsCount) {

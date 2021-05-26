@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: form.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: form.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import city from './city'
+import order from './order'
+
+const app = {
+  /**
+   * Initializes form
+   * @function init
+   */
+  init () {
+    app.forms = document.getElementsByClassName('needs-validation')
+    document.getElementById('zip').addEventListener('focusout', (event) => {
+      app.displayCities(event)
+    })
+    document.getElementById('zip').addEventListener('change', (event) => {
+      app.displayCities(event)
+    })
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(app.forms).forEach((form) => {
+      form.addEventListener(
+        'submit',
+        (event) => app.handleFormSubmit(event),
+        false
+      )
+    })
+  },
+  /**
+   * Check the form data and create the order if necessary
+   * @function handleFormSubmit
+   * @param  {} event
+   */
+  handleFormSubmit (event) {
+    event.preventDefault()
+    const formType = event.target.getElementsByTagName('input')
+    // Retrieve the products and place their identifier in a table
+    let formValid = true
+    Array.prototype.slice.call(formType).forEach((form) => {
+      switch (form.id) {
+      case 'firstName':
+      case 'lastName':
+      case 'city':
+        if (validateText(form.value)) {
+          form.setCustomValidity('')
+          formValid = true
+        } else {
+          form.setCustomValidity('Invalid')
+          if (formValid === true) { form.focus() }
+          formValid = false
+        }
+        break
+      case 'address':
+        if (validateAlphanumeric(form.value)) {
+          form.setCustomValidity('')
+          formValid = true
+        } else {
+          form.setCustomValidity('Invalid')
+          if (formValid === true) { form.focus() }
+          formValid = false
+        }
+        break
+      case 'email':
+        if (validateEmail(form.value)) {
+          form.setCustomValidity('')
+          formValid = true
+        } else {
+          form.setCustomValidity('Invalid')
+          if (formValid === true) { form.focus() }
+          formValid = false
+        }
+        break
+      case 'zip':
+        if (validateNumeric(form.value)) {
+          form.setCustomValidity('')
+          formValid = true
+        } else {
+          form.setCustomValidity('Invalid')
+          if (formValid === true) { form.focus() }
+          formValid = false
+        }
+        break
+      }
+    })
+    if (!event.target.checkValidity()) {
+      event.target.classList.add('was-validated')
+      formValid = false
+    }
+    if (formValid) { order.setOrder() }
+  },
+  /**
+   * Returns a list of city with the given postal code
+   * @function displayCities
+   * @param  {string} event
+   */
+  displayCities (event) {
+    const zipcodeEl = document.getElementById('zip')
+
+    event.preventDefault()
+
+    city.getCities(zipcodeEl.value).then((cities) => {
+      document.querySelectorAll('.state__value').forEach((a) => {
+        a.remove()
+      })
+      const targetElement = document.getElementById('city')
+
+      for (const city of cities) {
+        const newDiv = document.createElement('option')
+        newDiv.className = 'state__value'
+        newDiv.innerText = city.nom
+        targetElement.appendChild(newDiv)
+      }
+      targetElement.focus()
+    })
+  }
+}
+/**
+ * Test if an email is valid
+ * @function validateEmail
+ * @param  {string} text Email to test
+ * @returns {boolean}
+ */
+const validateEmail = (text) => {
+  const re = /^(([^&lt;>()[\]\\.,;:\s@"]+(\.[^&lt;>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(String(text))
+}
+/**
+ * Test if the character string contains only letters
+ * @function validateText
+ * @param  {string} text
+ * @returns {boolean}
+ */
+const validateText = (text) => {
+  const re = /^(([a-zA-ZÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ]+))$/
+  return re.test(String(text))
+}
+/**
+ * Test if the character string contains only numbers
+ * @function validateNumeric
+ * @param {string} text
+ * @returns {boolean}
+ */
+const validateNumeric = (text) => {
+  const re = /^(([0-9]+))$/
+  return re.test(String(text))
+}
+/**
+ * Test if the character string contains only letters and / or numbers
+ * @function validateAlphanumeric
+ * @param  {string} text
+ * @returns {boolean}
+ */
+const validateAlphanumeric = (text) => {
+  const re = /^(([a-zA-Z 0-9ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ]+))$/
+  return re.test(String(text))
+}
+export default app
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addProduct">addProduct</a></li><li><a href="global.html#deleteOrder">deleteOrder</a></li><li><a href="global.html#deleteProduct">deleteProduct</a></li><li><a href="global.html#deleteProductRow">deleteProductRow</a></li><li><a href="global.html#displayCart">displayCart</a></li><li><a href="global.html#displayCities">displayCities</a></li><li><a href="global.html#displayOrder">displayOrder</a></li><li><a href="global.html#displayProduct">displayProduct</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCities">getCities</a></li><li><a href="global.html#getOrder">getOrder</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsCount">getProductsCount</a></li><li><a href="global.html#handleFormSubmit">handleFormSubmit</a></li><li><a href="global.html#handleQuantityChange">handleQuantityChange</a></li><li><a href="global.html#handleShopButtonClick">handleShopButtonClick</a></li><li><a href="global.html#handleTrashButtonClick">handleTrashButtonClick</a></li><li><a href="global.html#hide">hide</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#modal">modal</a></li><li><a href="global.html#navbar">navbar</a></li><li><a href="global.html#onNavbarToggleClick">onNavbarToggleClick</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#productsIsEmpty">productsIsEmpty</a></li><li><a href="global.html#refreshShopCounter">refreshShopCounter</a></li><li><a href="global.html#setOrder">setOrder</a></li><li><a href="global.html#updateProductCount">updateProductCount</a></li><li><a href="global.html#updateProductRow">updateProductRow</a></li><li><a href="global.html#updateSum">updateSum</a></li><li><a href="global.html#validateAlphanumeric">validateAlphanumeric</a></li><li><a href="global.html#validateEmail">validateEmail</a></li><li><a href="global.html#validateNumeric">validateNumeric</a></li><li><a href="global.html#validateText">validateText</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon May 24 2021 09:00:02 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

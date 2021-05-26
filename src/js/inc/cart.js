@@ -177,14 +177,6 @@ const app = {
   },
 
   /**
-   * Checks in the localstorage if the produced object is empty
-   * @function productsIsEmpty
-   * @returns {boolean}
-   */
-  productsIsEmpty () {
-    return app.getProductsCount === 0
-  },
-  /**
    * Manage the addition of a product when clicking on the shopping cart button
    * @function handleShopButtonClick
    * @param {MouseEvent} event

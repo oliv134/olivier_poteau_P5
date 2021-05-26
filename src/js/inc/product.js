@@ -19,7 +19,7 @@ const app = {
   /**
     * Displays all products retrieved earlier from the database on the .getProducts()
     *
-    * @param  {} products
+    * @param  {Object[]} products
     */
   displayProducts (products) {
     for (const product of products) {
@@ -29,7 +29,7 @@ const app = {
   /**
    * Display a product in a template
    * @function displayProduct
-   * @param  {} product
+   * @param  {Object} product
    */
   displayProduct (product) {
     // Create a clone of the template and fill in all the information collected earlier

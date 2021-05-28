@@ -1,6 +1,6 @@
 {
   "prettier.disableLanguages": ["js", "jsx", "ts"],
-  "editor.tabSize": 5,
+  "editor.tabSize": 2,
   "editor.formatOnSave": false,
   "[javascript]": {
     "editor.formatOnSave": false

@@ -13,6 +13,7 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" /> -->
 </head>
 <header>
+  <!-- navbar -->
   <nav class="navbar fixed-top p-3 mb-3 navbar-expand-lg navbar-light bg-dark text-white">
     <div class="container">
       <a class="navbar-brand" href="./index.html">
@@ -27,8 +28,6 @@
           <li class="nav-item">
             <a class="nav-link active text-white" href="index.html">Articles</a>
           </li>
-
-
           <li class="nav-item">
             <a class="nav-link text-white" href="summary.html" tabindex="-&">
               Ma Commande</a>
@@ -78,7 +77,6 @@
   <main class="container">
     <div class="card" id="cart__show">
       <div class="row">
-
         <div class="cart col-md-8">
           <div class="title mb-5">
             <div class="row">
@@ -100,10 +98,10 @@
           </div>
 
           <div id="cart__products">
-            <!-- Cart Row Template -->
+            <!-- Insert Cart Row Template -->
           </div>
 
-          <!-- Cart Row Template -->
+          <!-- Template - Cart Row -->
           <template id="cart__row">
 
             <div class="row main align-items-center product__row border-top border-bottom">
@@ -133,14 +131,15 @@
             </div>
 
           </template>
-          <!-- Cart Row Template -->
-
+          
+          <!-- Back to index -->
           <div class="back-to-shop">
-            <a href="index.html"></i></a><span class="text-muted"><i class="fas fa-backward"></i> Retour aux
-              articles</span>
+            <a href="index.html"></i></a><span class="text-muted"><i class="fas fa-backward"></i>
+              Retour aux articles</span>
           </div>
         </div>
 
+        <!-- Summary -->
         <div class="col-md-4 summary">
           <div>
             <h5><b>Résumé de la commande</b></h5>
@@ -170,12 +169,13 @@
       </div>
     </div>
 
+    <!-- Formulaire -->
     <div class="card" id="cart__identity">
       <div class="row cart">
         <div class="col">
           <h4 class="mb-3">Vos coordonnées</h4>
 
-          <!-- Formulaire -->
+          
           <form class="needs-validation" novalidate>
             <div class="row g-3">
               <div class="col-sm-6">
@@ -194,13 +194,12 @@
                 </div>
               </div>
 
-
-
               <div class="col-12">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" placeholder="vous@exemple.com" required>
                 <div class="invalid-feedback">
-                  Veuillez saisir une adresse e-mail valide pour les mises à jour d'expédition.
+                  Veuillez saisir une adresse e-mail valide pour les mises à jour
+                  d'expédition.
                 </div>
               </div>
 
@@ -241,6 +240,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal - Add to the cart -->
     <div id="cart__no" class="alert alert-warning m-3 d-none" role="alert">
       <div class="row">
         <div class="col col-2 col-md-1 text-center fs-1">
@@ -260,6 +261,7 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
     crossorigin="anonymous"></script>-->
+  <!-- <script src="./js/app.js"></script>-->
 </body>
 
 </html>

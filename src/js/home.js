@@ -11,7 +11,7 @@ const app = {
         .then((response) => {
           product.displayProducts(response)
         })
-      modal.hide('modalCart', '2000')
+      modal.hide('modalCart', '0')
     }
   }
 }

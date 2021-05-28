@@ -10,12 +10,11 @@ const app = {
 
     const products = []
     for (const product in productsObject) {
-      console.log(productsObject[product])
       for (let qt = 0; qt < productsObject[product]; qt++) {
         products.push(product)
       }
     }
-    console.log(products)
+
     // Create a contact object with all the values of the forms
     const contact = {
       firstName: document.getElementById('firstName').value,
@@ -24,13 +23,13 @@ const app = {
       city: document.getElementById('city').value,
       email: document.getElementById('email').value
     }
-    console.log(JSON.stringify({ contact, products }))
+
     // Send the products table and the contact object to finalize the order
     post('http://localhost:3000/api/cameras/order', JSON.stringify({ contact, products }))
       .then(response => response.json())
       .then(function (response) {
         // Adds the order object retrieved in the request
-        console.log(JSON.stringify(response))
+
         localStorage.setItem('order', JSON.stringify(response))
         // Remove products from localstorage
         localStorage.removeItem('products')

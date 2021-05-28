@@ -16,9 +16,11 @@ const modal = {
 
       myModalEl.addEventListener('shown.bs.modal', function (event) {
         const myModal = bootstrap.Modal.getInstance(myModalEl)
-        setTimeout(function () {
-          myModal.hide()
-        }, duration)
+        if (duration > 0) {
+          setTimeout(function () {
+            myModal.hide()
+          }, duration)
+        }
       })
     }
   }

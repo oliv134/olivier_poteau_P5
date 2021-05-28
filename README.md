@@ -106,16 +106,9 @@ Vous devez avoir npm d'installé sur votre système.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Le backend doit être exécuté avant. Il est disponible ici:&nbsp;
+Le backend doit être exécuté avant. Il est disponible ici: [https://github.com/OpenClassrooms-Student-Center/JWDP5.git](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
 
-[https://github.com/OpenClassrooms-Student-Center/JWDP5.git](https://github.com/OpenClassrooms-Student-Center/JWDP5.git)
-
-&nbsp;
-Une fois ce dépot cloné pour devez l'éxécuter avec
-   ```sh
-   npm start
-   ```
-
+#### Start
 Pour ce projet, vous pouvez excuter un seveur léger via:
    ```sh
    npm run dev

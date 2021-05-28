@@ -35,10 +35,14 @@ const app = {
    */
   setOrder () {
     const productsObject = JSON.parse(cart.getProducts())
+
     const products = []
     for (const product in productsObject) {
-      products.push(product)
+      for (let qt = 0; qt &lt; productsObject[product]; qt++) {
+        products.push(product)
+      }
     }
+
     // Create a contact object with all the values of the forms
     const contact = {
       firstName: document.getElementById('firstName').value,
@@ -47,11 +51,13 @@ const app = {
       city: document.getElementById('city').value,
       email: document.getElementById('email').value
     }
+
     // Send the products table and the contact object to finalize the order
     post('http://localhost:3000/api/cameras/order', JSON.stringify({ contact, products }))
       .then(response => response.json())
       .then(function (response) {
         // Adds the order object retrieved in the request
+
         localStorage.setItem('order', JSON.stringify(response))
         // Remove products from localstorage
         localStorage.removeItem('products')
@@ -131,7 +137,6 @@ const app = {
     const summary = JSON.parse(app.getOrder())
     return summary.products.length
   }
-
 }
 
 export default app
@@ -145,13 +150,13 @@ export default app
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addProduct">addProduct</a></li><li><a href="global.html#deleteOrder">deleteOrder</a></li><li><a href="global.html#deleteProduct">deleteProduct</a></li><li><a href="global.html#deleteProductRow">deleteProductRow</a></li><li><a href="global.html#displayCart">displayCart</a></li><li><a href="global.html#displayCities">displayCities</a></li><li><a href="global.html#displayOrder">displayOrder</a></li><li><a href="global.html#displayProduct">displayProduct</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCities">getCities</a></li><li><a href="global.html#getOrder">getOrder</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsCount">getProductsCount</a></li><li><a href="global.html#handleFormSubmit">handleFormSubmit</a></li><li><a href="global.html#handleQuantityChange">handleQuantityChange</a></li><li><a href="global.html#handleShopButtonClick">handleShopButtonClick</a></li><li><a href="global.html#handleTrashButtonClick">handleTrashButtonClick</a></li><li><a href="global.html#hide">hide</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#modal">modal</a></li><li><a href="global.html#navbar">navbar</a></li><li><a href="global.html#onNavbarToggleClick">onNavbarToggleClick</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#productsIsEmpty">productsIsEmpty</a></li><li><a href="global.html#refreshShopCounter">refreshShopCounter</a></li><li><a href="global.html#setOrder">setOrder</a></li><li><a href="global.html#updateProductCount">updateProductCount</a></li><li><a href="global.html#updateProductRow">updateProductRow</a></li><li><a href="global.html#updateSum">updateSum</a></li><li><a href="global.html#validateAlphanumeric">validateAlphanumeric</a></li><li><a href="global.html#validateEmail">validateEmail</a></li><li><a href="global.html#validateNumeric">validateNumeric</a></li><li><a href="global.html#validateText">validateText</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addProduct">addProduct</a></li><li><a href="global.html#deleteOrder">deleteOrder</a></li><li><a href="global.html#deleteProduct">deleteProduct</a></li><li><a href="global.html#deleteProductRow">deleteProductRow</a></li><li><a href="global.html#displayCart">displayCart</a></li><li><a href="global.html#displayCities">displayCities</a></li><li><a href="global.html#displayOrder">displayOrder</a></li><li><a href="global.html#displayProduct">displayProduct</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getCities">getCities</a></li><li><a href="global.html#getOrder">getOrder</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsCount">getProductsCount</a></li><li><a href="global.html#handleFormSubmit">handleFormSubmit</a></li><li><a href="global.html#handleQuantityChange">handleQuantityChange</a></li><li><a href="global.html#handleShopButtonClick">handleShopButtonClick</a></li><li><a href="global.html#handleTrashButtonClick">handleTrashButtonClick</a></li><li><a href="global.html#hide">hide</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#modal">modal</a></li><li><a href="global.html#navbar">navbar</a></li><li><a href="global.html#onNavbarToggleClick">onNavbarToggleClick</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#refreshShopCounter">refreshShopCounter</a></li><li><a href="global.html#setOrder">setOrder</a></li><li><a href="global.html#updateProductCount">updateProductCount</a></li><li><a href="global.html#updateProductRow">updateProductRow</a></li><li><a href="global.html#updateSum">updateSum</a></li><li><a href="global.html#validateAlphanumeric">validateAlphanumeric</a></li><li><a href="global.html#validateEmail">validateEmail</a></li><li><a href="global.html#validateNumeric">validateNumeric</a></li><li><a href="global.html#validateText">validateText</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon May 24 2021 09:00:02 GMT+0200 (GMT+02:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri May 28 2021 09:15:06 GMT+0200 (GMT+02:00)
 </footer>
 
 <script> prettyPrint(); </script>

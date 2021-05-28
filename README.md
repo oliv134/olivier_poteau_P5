@@ -144,7 +144,7 @@ Les fichiers générés seront disponibles dans ./build/
 <!-- USAGE EXAMPLES -->
 ## Documentation
 
-La documentation des js peut-ëtre générée par
+La documentation des js peut-ê  tre générée par
    ```sh
    npm run doc
    ```

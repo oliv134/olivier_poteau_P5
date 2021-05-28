@@ -54,8 +54,8 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#documentation">Documentation</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#contribution">Contribution</a></li>
+    <li><a href="#licence">Licence</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -159,7 +159,7 @@ Voir les [issues](https://github.com/oliv134/olivier_poteau_P5N/issues) pour une
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## Contribution
 
 Les contributions sont ce qui fait de la communauté open source un endroit incroyable pour apprendre, inspirer et créer. Toute contribution que vous apportez est ** grandement appréciée **.
 

@@ -15,7 +15,6 @@ const app = {
     return get('http://localhost:3000/api/cameras' + (productId !== undefined ? '/' + productId : ''))
       .then(response => response.json())
   },
-
   /**
     * Displays all products retrieved earlier from the database on the .getProducts()
     *

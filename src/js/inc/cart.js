@@ -121,7 +121,6 @@ const app = {
       document.querySelector('.total__price').textContent = '€ ' + productsPrice
     }
   },
-
   /**
    * Returns the total of the products contained in the localStorage
    * @function getProductsCount
@@ -152,7 +151,6 @@ const app = {
 
     localStorage.setItem('products', JSON.stringify(products))
   },
-
   /**
    * Updates the localstorage with the number of items for a product with the given ID
    * @function updateProductCount
@@ -164,7 +162,6 @@ const app = {
     products[productId] = count
     localStorage.setItem('products', JSON.stringify(products))
   },
-
   /**
    * Removes from localstorage a product with the given ID
    * @function deleteProduct
@@ -175,7 +172,6 @@ const app = {
     delete products[productId]
     localStorage.setItem('products', JSON.stringify(products))
   },
-
   /**
    * Manage the addition of a product when clicking on the shopping cart button
    * @function handleShopButtonClick
@@ -206,7 +202,6 @@ const app = {
     // Updates the product summary
     app.updateSum()
   },
-
   /**
    * Subtracts the quantity from the input element and triggers the associated 'change' event
    * @funciton handleLessButtonClick
@@ -221,7 +216,6 @@ const app = {
     const changeEvent = new Event('change')
     quantityInput.dispatchEvent(changeEvent)
   },
-
   /**
    * Adds the quantity from the input element and triggers the associated 'change' event
    * @funciton handleMoreButtonClick

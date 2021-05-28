@@ -138,7 +138,7 @@ const validateEmail = (text) => {
 /**
  * Test if the character string contains only letters
  * @function validateText
- * @param  {string} text
+ * @param  {string} text Text to test
  * @returns {boolean}
  */
 const validateText = (text) => {
@@ -148,7 +148,7 @@ const validateText = (text) => {
 /**
  * Test if the character string contains only numbers
  * @function validateNumeric
- * @param {string} text
+ * @param {string} text Text to test
  * @returns {boolean}
  */
 const validateNumeric = (text) => {
@@ -158,7 +158,7 @@ const validateNumeric = (text) => {
 /**
  * Test if the character string contains only letters and / or numbers
  * @function validateAlphanumeric
- * @param  {string} text
+ * @param  {string} text Text to test
  * @returns {boolean}
  */
 const validateAlphanumeric = (text) => {

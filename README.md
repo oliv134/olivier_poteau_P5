@@ -81,7 +81,7 @@ Le site utilise le framework bootstrap 5. Il est transpilé avec l'utilisation d
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Pour obtenir une copie locale opérationnelle, suivez ces étapes simples d'exemple.
+Pour obtenir une copie locale opérationnelle, suivez ces étapes:
 
 ### Prerequisites
 

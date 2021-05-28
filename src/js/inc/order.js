@@ -109,7 +109,6 @@ const app = {
     const summary = JSON.parse(app.getOrder())
     return summary.products.length
   }
-
 }
 
 export default app

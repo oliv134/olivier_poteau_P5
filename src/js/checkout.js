@@ -3,6 +3,7 @@ import forms from './inc/form'
 
 const app = {
   init () {
+    // if the displayed page is the checkout page then we execute
     if (document.title.includes('Commande') === true) {
       product.init()
       product.displayCart()

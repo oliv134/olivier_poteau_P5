@@ -1,7 +1,7 @@
-// import product from './inc/product'
 import order from './inc/order'
 const app = {
   init () {
+    // if the displayed page is the summary page then we execute
     if (document.title.includes('Récapitulatif') === true) {
       const summary = JSON.parse(order.getOrder())
 

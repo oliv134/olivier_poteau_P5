@@ -2,7 +2,7 @@ import { get } from './fetch'
 
 const app = {
   /**
-  * Retourne une liste de villes en fonction du code postal fourni
+  * Returns a list of cities based on the postal code provided
   * @function getCities
   * @param {string} zipcode
   * @returns {Object[]} cities

@@ -12,8 +12,6 @@ const modal = {
   hide (idModal, duration = 2000) {
     const myModalEl = document.getElementById(idModal)
     if (myModalEl !== null) {
-      // const modal = bootstrap.Modal.getInstance(myModalEl)
-
       myModalEl.addEventListener('shown.bs.modal', function (event) {
         const myModal = bootstrap.Modal.getInstance(myModalEl)
         if (duration > 0) {

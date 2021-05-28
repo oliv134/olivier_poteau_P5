@@ -3,10 +3,8 @@ import modal from './inc/modal'
 import { parameters } from './inc/param'
 const app = {
   init () {
-    // Retrieves the products from the database and calls the associated method to display them
-
+    // if the displayed page is the details page then we execute
     if (document.title.includes('Article') === true) {
-      // if (document.querySelector('.products') !== null) {
       product.init()
       const id = parameters(window.location.href, 'id')
       product.getProducts(id).then((response) => {
